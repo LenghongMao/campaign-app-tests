@@ -1,0 +1,22 @@
+[
+  { "campaignName": "Summer Blast", "number": "SB01", "name": "Beach Towel", "category": "Home", "desc": "Large cotton towel", "qty": "500" },
+  { "campaignName": "Summer Blast", "number": "SB02", "name": "Sunglasses", "category": "Accessories", "desc": "UV400 protection", "qty": "200" },
+  { "campaignName": "Back to School", "number": "BS01", "name": "Backpack", "category": "Gear", "desc": "Waterproof bag", "qty": "300" },
+  { "campaignName": "Back to School", "number": "BS02", "name": "Notebooks", "category": "Stationery", "desc": "5-pack college ruled", "qty": "1000" },
+  { "campaignName": "Halloween Spooktacular", "number": "HW01", "name": "Fake Fangs", "category": "Costume", "desc": "Plastic vampire teeth", "qty": "800" },
+  { "campaignName": "Halloween Spooktacular", "number": "HW02", "name": "Candy Bucket", "category": "Accessories", "desc": "Pumpkin shaped", "qty": "400" },
+  { "campaignName": "Black Friday Early", "number": "BF01", "name": "Smart Watch", "category": "Electronics", "desc": "Fitness tracker", "qty": "150" },
+  { "campaignName": "Black Friday Early", "number": "BF02", "name": "Wireless Earbuds", "category": "Electronics", "desc": "Noise cancelling", "qty": "300" },
+  { "campaignName": "Cyber Monday", "number": "CM01", "name": "Gaming Mouse", "category": "Electronics", "desc": "RGB 10000 DPI", "qty": "250" },
+  { "campaignName": "Cyber Monday", "number": "CM02", "name": "Mechanical Keyboard", "category": "Electronics", "desc": "Blue switches", "qty": "200" },
+  { "campaignName": "Holiday Gift Guide", "number": "HG01", "name": "Scented Candle", "category": "Home", "desc": "Pine scent", "qty": "600" },
+  { "campaignName": "Holiday Gift Guide", "number": "HG02", "name": "Cozy Blanket", "category": "Home", "desc": "Fleece throw", "qty": "400" },
+  { "campaignName": "New Year Clearance", "number": "NY01", "name": "Yoga Mat", "category": "Fitness", "desc": "Non-slip 6mm", "qty": "200" },
+  { "campaignName": "New Year Clearance", "number": "NY02", "name": "Water Bottle", "category": "Fitness", "desc": "Stainless steel 32oz", "qty": "500" },
+  { "campaignName": "Valentine Specials", "number": "VS01", "name": "Heart Chocolates", "category": "Food", "desc": "Assorted truffles", "qty": "800" },
+  { "campaignName": "Valentine Specials", "number": "VS02", "name": "Plush Bear", "category": "Toys", "desc": "12 inch white bear", "qty": "300" },
+  { "campaignName": "Spring Cleaning", "number": "SC01", "name": "Robot Vacuum", "category": "Home", "desc": "Smart mapping", "qty": "100" },
+  { "campaignName": "Spring Cleaning", "number": "SC02", "name": "Storage Bins", "category": "Home", "desc": "Set of 4 clear bins", "qty": "600" },
+  { "campaignName": "Easter Promo", "number": "EP01", "name": "Easter Basket", "category": "Seasonal", "desc": "Woven basket with grass", "qty": "450" },
+  { "campaignName": "Easter Promo", "number": "EP02", "name": "Chocolate Bunny", "category": "Food", "desc": "Solid milk chocolate", "qty": "1000" }
+]

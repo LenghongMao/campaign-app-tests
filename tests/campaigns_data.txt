@@ -1,0 +1,12 @@
+[
+  { "name": "Summer Blast", "start": "2026-06-01", "end": "2026-06-30", "channel": "Social Media" },
+  { "name": "Back to School", "start": "2026-08-01", "end": "2026-08-31", "channel": "Email" },
+  { "name": "Halloween Spooktacular", "start": "2026-10-15", "end": "2026-10-31", "channel": "Website" },
+  { "name": "Black Friday Early", "start": "2026-11-01", "end": "2026-11-25", "channel": "Affiliate" },
+  { "name": "Cyber Monday", "start": "2026-11-30", "end": "2026-11-30", "channel": "Social Media" },
+  { "name": "Holiday Gift Guide", "start": "2026-12-01", "end": "2026-12-24", "channel": "Email" },
+  { "name": "New Year Clearance", "start": "2027-01-01", "end": "2027-01-15", "channel": "Website" },
+  { "name": "Valentine Specials", "start": "2027-02-01", "end": "2027-02-14", "channel": "Social Media" },
+  { "name": "Spring Cleaning", "start": "2027-03-01", "end": "2027-03-31", "channel": "Email" },
+  { "name": "Easter Promo", "start": "2027-04-01", "end": "2027-04-10", "channel": "Website" }
+]
