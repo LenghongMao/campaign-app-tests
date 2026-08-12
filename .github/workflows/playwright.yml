@@ -33,3 +33,19 @@ jobs:
         name: final-screenshot
         path: screenshots/
         retention-days: 30
+
+    #  SUCCESS NOTIFICATION
+    - name: Slack Notification (Pass)
+      if: success()
+      run: |
+        curl -X POST -H 'Content-type: application/json' \
+        --data '{"text":"✅ *Playwright Tests Passed!* 🎉\nAll campaigns and products were verified successfully.\n*View Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
+        ${{ secrets.SLACK_WEBHOOK_URL }}
+
+    #  FAILURE NOTIFICATION
+    - name: Slack Notification (Fail)
+      if: failure()
+      run: |
+        curl -X POST -H 'Content-type: application/json' \
+        --data '{"text":"❌ *Playwright Tests Failed!* 🚨\nSomething broke during the E2E run.\n*View Error Report & Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
+        ${{ secrets.SLACK_WEBHOOK_URL }}
