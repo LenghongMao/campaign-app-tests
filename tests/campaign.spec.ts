@@ -46,6 +46,10 @@ test.describe('Campaign App E2E Flow', () => {
       const newRow = page.locator('tr', { hasText: campaign.name });
       await expect(newRow).toBeVisible();
     }
+    await page.screenshot({ 
+      path: 'screenshots/campaign-list-complete.png', 
+      fullPage: true 
+    });
   });
 
   test('Test 2: Add 2 products to each campaign', async () => {
@@ -69,7 +73,7 @@ test.describe('Campaign App E2E Flow', () => {
         await expect(page.locator('.modal-title', { hasText: 'New Product' })).toBeVisible();
 
         await page.waitForTimeout(500);
-        
+
         // Fill out the product form
         await page.locator('#pNumber').fill(product.number);
         await page.locator('#pName').fill(product.name);
