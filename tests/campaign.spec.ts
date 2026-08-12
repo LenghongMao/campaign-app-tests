@@ -46,6 +46,7 @@ test.describe('Campaign App E2E Flow', () => {
       const newRow = page.locator('tr', { hasText: campaign.name });
       await expect(newRow).toBeVisible();
     }
+    await page.waitForTimeout(1000); // Wait for a second to ensure all campaigns are rendered
     await page.screenshot({ 
       path: 'screenshots/campaign-list-complete.png', 
       fullPage: true 
