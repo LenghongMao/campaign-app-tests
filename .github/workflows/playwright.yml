@@ -46,7 +46,7 @@ jobs:
       if: success()
       run: |
         curl -X POST -H 'Content-type: application/json' \
-        --data '{"text":"✅ *Playwright Tests Passed!* 🎉\n*Scope Verified:* ${{ github.event.client_payload.scope_msg }}\n*View Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
+        --data '{"text":"✅ *Playwright Tests Passed!* 🎉\n*Scope Verified:* ${{ github.event.client_payload.scope_msg || 'Full Suite (Triggered Directly)' }}\n*View Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
         ${{ secrets.SLACK_WEBHOOK_URL }}
 
     #  FAILURE NOTIFICATION
@@ -54,5 +54,5 @@ jobs:
       if: failure()
       run: |
         curl -X POST -H 'Content-type: application/json' \
-        --data '{"text":"❌ *Playwright Tests Failed!* 🚨\n*Scope Attempted:* ${{ github.event.client_payload.scope_msg }}\nSomething broke during the E2E run.\n*View Error Report & Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
+        --data '{"text":"❌ *Playwright Tests Failed!* 🚨\n*Scope Attempted:* ${{ github.event.client_payload.scope_msg || 'Full Suite (Triggered Directly)' }}\nSomething broke during the E2E run.\n*View Error Report & Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
         ${{ secrets.SLACK_WEBHOOK_URL }}
