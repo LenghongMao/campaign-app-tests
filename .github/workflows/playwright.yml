@@ -41,31 +41,18 @@ jobs:
         path: screenshots/
         retention-days: 30
 
-    #  ADD THIS: Translate the tag into readable text
-    - name: Set Test Scope Variable
-      if: always()
-      run: |
-        TAG="${{ github.event.client_payload.grep_tag }}"
-        if [ "$TAG" == "@index" ]; then
-          echo "TEST_SCOPE=Campaign List (@index)" >> $GITHUB_ENV
-        elif [ "$TAG" == "@detail" ]; then
-          echo "TEST_SCOPE=Campaign Detail (@detail)" >> $GITHUB_ENV
-        else
-          echo "TEST_SCOPE=All Tests (Full Suite)" >> $GITHUB_ENV
-        fi
+   #  SUCCESS NOTIFICATION
+  - name: Slack Notification (Pass)
+    if: success()
+    run: |
+      curl -X POST -H 'Content-type: application/json' \
+      --data '{"text":"✅ *Playwright Tests Passed!* 🎉\n*Scope Verified:* ${{ github.event.client_payload.scope_msg }}\n*View Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
+      ${{ secrets.SLACK_WEBHOOK_URL }}
 
-    #  SUCCESS NOTIFICATION (Updated)
-    - name: Slack Notification (Pass)
-      if: success()
-      run: |
-        curl -X POST -H 'Content-type: application/json' \
-        --data '{"text":"✅ *Playwright Tests Passed!* 🎉\n*Scope Verified:* ${{ env.TEST_SCOPE }}\n*View Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
-        ${{ secrets.SLACK_WEBHOOK_URL }}
-
-    #  FAILURE NOTIFICATION (Updated)
-    - name: Slack Notification (Fail)
-      if: failure()
-      run: |
-        curl -X POST -H 'Content-type: application/json' \
-        --data '{"text":"❌ *Playwright Tests Failed!* 🚨\n*Scope Attempted:* ${{ env.TEST_SCOPE }}\nSomething broke during the E2E run.\n*View Error Report & Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
-        ${{ secrets.SLACK_WEBHOOK_URL }}
+  #  FAILURE NOTIFICATION
+  - name: Slack Notification (Fail)
+    if: failure()
+    run: |
+      curl -X POST -H 'Content-type: application/json' \
+      --data '{"text":"❌ *Playwright Tests Failed!* 🚨\n*Scope Attempted:* ${{ github.event.client_payload.scope_msg }}\nSomething broke during the E2E run.\n*View Error Report & Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
+      ${{ secrets.SLACK_WEBHOOK_URL }}
