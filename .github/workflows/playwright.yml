@@ -42,17 +42,17 @@ jobs:
         retention-days: 30
 
    #  SUCCESS NOTIFICATION
-  - name: Slack Notification (Pass)
-    if: success()
-    run: |
-      curl -X POST -H 'Content-type: application/json' \
-      --data '{"text":"✅ *Playwright Tests Passed!* 🎉\n*Scope Verified:* ${{ github.event.client_payload.scope_msg }}\n*View Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
-      ${{ secrets.SLACK_WEBHOOK_URL }}
+    - name: Slack Notification (Pass)
+      if: success()
+      run: |
+        curl -X POST -H 'Content-type: application/json' \
+        --data '{"text":"✅ *Playwright Tests Passed!* 🎉\n*Scope Verified:* ${{ github.event.client_payload.scope_msg }}\n*View Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
+        ${{ secrets.SLACK_WEBHOOK_URL }}
 
-  #  FAILURE NOTIFICATION
-  - name: Slack Notification (Fail)
-    if: failure()
-    run: |
-      curl -X POST -H 'Content-type: application/json' \
-      --data '{"text":"❌ *Playwright Tests Failed!* 🚨\n*Scope Attempted:* ${{ github.event.client_payload.scope_msg }}\nSomething broke during the E2E run.\n*View Error Report & Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
-      ${{ secrets.SLACK_WEBHOOK_URL }}
+    #  FAILURE NOTIFICATION
+    - name: Slack Notification (Fail)
+      if: failure()
+      run: |
+        curl -X POST -H 'Content-type: application/json' \
+        --data '{"text":"❌ *Playwright Tests Failed!* 🚨\n*Scope Attempted:* ${{ github.event.client_payload.scope_msg }}\nSomething broke during the E2E run.\n*View Error Report & Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
+        ${{ secrets.SLACK_WEBHOOK_URL }}
