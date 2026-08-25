@@ -6,6 +6,9 @@ on:
   #   branches: [ main, master ]
   repository_dispatch:
     types: [run-playwright]
+  schedule:
+    # Runs at 3:55 AM UTC, which is 10:55 AM in Cambodia (UTC+7)
+    - cron: '55 3 * * *'
 jobs:
   test:
     timeout-minutes: 60
