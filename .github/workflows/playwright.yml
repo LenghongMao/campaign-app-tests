@@ -72,7 +72,7 @@ jobs:
         username: ${{ secrets.SMTP_USER }}
         password: ${{ secrets.SMTP_PASSWORD }}
         subject: "✅ Playwright Passed: ${{ github.repository }}"
-        to: maolenghong@gmail.com  # 👈 Make sure to put the correct destination email here
+        to: maolenghong@yahoo.com  # 👈 Make sure to put the correct destination email here
         from: Playwright CI Bot <${{ secrets.SMTP_USER }}>
         body: |
           Playwright E2E tests have finished successfully!
@@ -91,7 +91,7 @@ jobs:
         username: ${{ secrets.SMTP_USER }}
         password: ${{ secrets.SMTP_PASSWORD }}
         subject: "🚨 ALERT: Playwright Failed on ${{ github.repository }}"
-        to: maolenghong@gmail.com  # 👈 Make sure to put the correct destination email here
+        to: maolenghong@yahoo.com  # 👈 Make sure to put the correct destination email here
         from: Playwright CI Bot <${{ secrets.SMTP_USER }}>
         body: |
           Attention! The Playwright E2E Test Suite has encountered errors.
