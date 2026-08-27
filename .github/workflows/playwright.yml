@@ -78,7 +78,7 @@ jobs:
           Playwright E2E tests have finished successfully!
           
           Scope Verified: ${{ github.event.client_payload.scope_msg || 'Full Suite (Scheduled / Direct Run)' }}
-          Run Logs & Artifacts: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          Run Logs & Artifacts: https://github.com{{ github.repository }}/actions/runs/${{ github.run_id }}
 
     #  EMAIL FAILURE NOTIFICATION
     - name: Email Notification (Fail)
@@ -100,4 +100,4 @@ jobs:
           Triggered By Event: ${{ github.event_name }}
           
           You can inspect the execution log, trace viewer assets, and test screenshots directly on GitHub:
-          https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          https://github.com{{ github.repository }}/actions/runs/${{ github.run_id }}
