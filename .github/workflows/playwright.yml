@@ -66,32 +66,32 @@ jobs:
       if: success()
       uses: dawidd6/action-send-mail@v4
       with:
-        server_address: smtp.gmail.com   # 👈 MUST be exactly this (no http:// or smtp://)
+        server_address: ://gmail.com
         server_port: 465
         secure: true
         username: "${{ secrets.SMTP_USER }}"
         password: "${{ secrets.SMTP_PASSWORD }}"
         subject: "✅ Playwright Passed: ${{ github.repository }}"
-        to: "maolenghong@yahoo.com" # 👈 Your Yahoo email destination
+        to: "maolenghong@yahoo.com" # 👈 Make sure your Yahoo email is here
         from: "${{ secrets.SMTP_USER }}"
         body: |
           Playwright E2E tests have finished successfully!
           
           Scope Verified: ${{ github.event.client_payload.scope_msg || 'Full Suite (Scheduled / Direct Run)' }}
-          Run Logs & Artifacts: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          Run Logs & Artifacts: https://github.com{{ github.repository }}/actions/runs/${{ github.run_id }}
 
     #  EMAIL FAILURE NOTIFICATION
     - name: Email Notification (Fail)
       if: failure()
       uses: dawidd6/action-send-mail@v4
       with:
-        server_address: smtp.gmail.com   # 👈 MUST be exactly this (no http:// or smtp://)
+        server_address: ://gmail.com
         server_port: 465
         secure: true
         username: "${{ secrets.SMTP_USER }}"
         password: "${{ secrets.SMTP_PASSWORD }}"
         subject: "🚨 ALERT: Playwright Failed on ${{ github.repository }}"
-        to: "maolenghong@yahoo.com" # 👈 Your Yahoo email destination
+        to: "maolenghong@yahoo.com" # 👈 Make sure your Yahoo email is here
         from: "${{ secrets.SMTP_USER }}"
         body: |
           Attention! The Playwright E2E Test Suite has encountered errors.
@@ -100,6 +100,5 @@ jobs:
           Triggered By Event: ${{ github.event_name }}
           
           You can inspect the execution log, trace viewer assets, and test screenshots directly on GitHub:
-          https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }
-
+          https://github.com{{ github.repository }}/actions/runs/${{ github.run_id }}
 
