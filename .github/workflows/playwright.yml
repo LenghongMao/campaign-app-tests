@@ -59,3 +59,46 @@ jobs:
         curl -X POST -H 'Content-type: application/json' \
         --data '{"text":"❌ *Playwright Tests Failed!* 🚨\n*Scope Attempted:* ${{ github.event.client_payload.scope_msg || 'Full Suite (Triggered Directly)' }}\nSomething broke during the E2E run.\n*View Error Report & Screenshots:* https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' \
         ${{ secrets.SLACK_WEBHOOK_URL }}
+
+
+    #  EMAIL SUCCESS NOTIFICATION
+    - name: Email Notification (Pass)
+      if: success()
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: ://gmail.com
+        server_port: 465
+        secure: true
+        username: ${{ secrets.SMTP_USER }}
+        password: ${{ secrets.SMTP_PASSWORD }}
+        subject: "✅ Playwright Passed: ${{ github.repository }}"
+        to: maolenghong@yahoo.com  # 👈 CHANGE THIS TO YOUR EMAIL
+        from: Playwright CI Bot
+        body: |
+          Playwright E2E tests have finished successfully!
+          
+          Scope Verified: ${{ github.event.client_payload.scope_msg || 'Full Suite (Scheduled / Direct Run)' }}
+          Run Logs & Artifacts: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+#  EMAIL FAILURE NOTIFICATION
+    - name: Email Notification (Fail)
+      if: failure()
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: ://gmail.com
+        server_port: 465
+        secure: true
+        username: ${{ secrets.SMTP_USER }}
+        password: ${{ secrets.SMTP_PASSWORD }}
+        subject: "🚨 ALERT: Playwright Failed on ${{ github.repository }}"
+        to: maolenghong@yahoo.com  # 👈 CHANGE THIS TO YOUR EMAIL
+        from: Playwright CI Bot
+        body: |
+          Attention! The Playwright E2E Test Suite has encountered errors.
+          
+          Scope Attempted: ${{ github.event.client_payload.scope_msg || 'Full Suite (Scheduled / Direct Run)' }}
+          Triggered By Event: ${{ github.event_name }}
+          
+          You can inspect the execution log, trace viewer assets, and test screenshots directly on GitHub:
+          https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
