@@ -66,13 +66,13 @@ jobs:
       if: success()
       uses: dawidd6/action-send-mail@v4
       with:
-        server_address: ://gmail.com
+        server_address: smtp.gmail.com   # 👈 MUST be exactly this (no http:// or smtp://)
         server_port: 465
         secure: true
         username: "${{ secrets.SMTP_USER }}"
         password: "${{ secrets.SMTP_PASSWORD }}"
         subject: "✅ Playwright Passed: ${{ github.repository }}"
-        to: "maolenghong@yahoo.com" # 👈 Change to your actual Yahoo email
+        to: "maolenghong@yahoo.com" # 👈 Your Yahoo email destination
         from: "${{ secrets.SMTP_USER }}"
         body: |
           Playwright E2E tests have finished successfully!
@@ -85,13 +85,13 @@ jobs:
       if: failure()
       uses: dawidd6/action-send-mail@v4
       with:
-        server_address: ://gmail.com
+        server_address: smtp.gmail.com   # 👈 MUST be exactly this (no http:// or smtp://)
         server_port: 465
         secure: true
         username: "${{ secrets.SMTP_USER }}"
         password: "${{ secrets.SMTP_PASSWORD }}"
         subject: "🚨 ALERT: Playwright Failed on ${{ github.repository }}"
-        to: "maolenghong@yahoo.com" # 👈 Change to your actual Yahoo email
+        to: "maolenghong@yahoo.com" # 👈 Your Yahoo email destination
         from: "${{ secrets.SMTP_USER }}"
         body: |
           Attention! The Playwright E2E Test Suite has encountered errors.
